@@ -1,0 +1,62 @@
+body{
+    background-color:#F9CB9C;
+}
+
+.tam_img{
+    width: 100%;
+    max-width: 550px;
+    
+}
+    
+.titulos{
+    font-size: 55px;
+    text-align: center;
+    
+}
+.tam_logo_mini{
+    width: 100%;
+    max-width: 350px;
+    
+}
+.letra_form{
+    font-size: 24px;
+    text-align: center;
+    font-style:initial;
+}
+.tam_img_prod{
+    width: 100%;
+    max-width: 155px;
+}
+
+.buttom{
+    background-color: rgb(35, 133, 247);
+    color: white;
+}
+ul{
+    background-color: rgb(238, 175, 247);
+    height: 75px;
+    max-width: 100%;
+    
+}
+.tam_logo_micro{
+    width: 100%;
+    max-width: 100px;
+    
+}
+.letra_menu{
+    font-size: 24px;
+    text-align: center;
+    font-style:initial;
+    color: rgb(0, 0, 0);
+}
+.letra_descripcion{
+    font-size: 18px;
+    text-align: center;
+    font-style:initial;
+    color: rgb(0, 0, 0);
+}
+.tam_img_prod_interior{
+    width: 100%;
+    max-width: 150px;
+    
+}
