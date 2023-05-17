@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+    {% load static %}
 
 <head>
     <meta charset="UTF-8">
@@ -71,53 +72,77 @@
         
     </ul>
     <div class="container">
+
         <div class="row" style="margin-top: 30px;">
             
             <div class="col-12  titulos">
-                <p>Recuperar Contraseña</p>
+                <p>Historial de compras</p>
             </div>
         </div>
+
         <div class="row">
-            <div class="col-md-3"></div>
-            <div class="col-md-6 ">
-                <form action="#" method="POST" enctype="multipart/form-data" name="" id="formRe">
 
-
-                    <div class="form-group letra_form">
-                        <label class="form-label">Nombre Usuario: </label>
-                        <input class="form-control"  type="text" name="" id="nameU">
-                    </div>
-                    
-                    <div class="form-group letra_form">
-                        <label class="form-label">Su pregunta escogida es: </label>
-                        <input class="form-control" type="text" name="pregunta escogida" value="¿Nombre de la cuidad de nacimiento?">
-                    </div>
-                    <div class="form-group letra_form">
-                        <label class="form-label">Respuesta pregunta: </label>
-                        <input class="form-control" type="password" name="" id="Respuesta" required>
-                    </div>
-
-                    <div class="form-group letra_form">
-                        <input type="submit" value="Recuperar Contraseña" class="btn buttom">
-                        <input type="reset" value="Limpiar" class="btn buttom">
-                        
-                    </div>
-                    <div>
-                        <p class="warnings" id="warnings"></p>
-                        <center>
-                        <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
-                        </center>
-                    </div>
-                    
-                </form>
+            <div class="col-md-12 " style="text-align: center;">
+                <table class="table ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">cod_venta</th>
+                            <th scope="col">rut</th>
+                            <th scope="col">fecha_venta</th>
+                            <th scope="col">fecha_entrega</th>
+                            <th scope="col">estado_p</th>
+                            <th scope="col">id_direccion</th>
+                            <th scope="col">total</th>
+                            <th scope="col">carrito</th>
+                            <th scope="col">estatus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>001</td>
+                            <td>123456789</td>
+                            <td>03/04/23</td>
+                            <td>07/04/23</td>
+                            <td>#</td>
+                            <td>3132</td>
+                            <td>$15500</td>
+                            <td>pagado</td>
+                            <td>enviado</td>
+                        </tr>
+                        <tr>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                        </tr>
+                        <tr>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <input type="submit" value="Modificar" class="btn buttom">
+                <input type="reset" value="volver" class="btn buttom">
+                <div>
+                    <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
+                </div>
             </div>
-            <div class="col-md-3"></div>
+
         </div>
-        
     </div>
-    
-
-
 
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -129,7 +154,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
-    <script src="js/RecuperarContra.js"></script>
 </body>
 
 </html>
