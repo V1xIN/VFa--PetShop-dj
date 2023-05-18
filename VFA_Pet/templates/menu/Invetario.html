@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-    {% load static %}
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +9,6 @@
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="Css/estilos.css">
 </head>
-
 <body>
     <ul class="nav ">
               
@@ -72,63 +69,83 @@
         
     </ul>
     <div class="container">
-        <div class="row">
+
+        <div class="row" style="margin-top: 30px;">
             
-            <div class="col-12 titulos" style="margin-top: 30px;">
-                <p>Catálogo</p>
-                <br>
-            </div>
-        </div>
-        <div class="row letra_form" >
-            <div class="col-md-6">
-                <p>Collar para Mascota</p><br>
-                <a href="Producto1.html"><img class="tam_img_prod" src="img/Collar1.png" alt="Sin imagen"></a>
-                
-            </div>
-            <div class="col-md-6">
-                <p>Plato para Comida</p><br>
-                <a href="Producto2.html"><img class="tam_img_prod" href="Producto2.html" src="img/Plato.png" alt="Sin imagen"></a>
-                <br><br><br>
-                
-            </div>
-            <div class="col-md-6">
-                <p>Pelota de Goma</p><br>
-                <a href="Producto3.html"><img class="tam_img_prod"  src="img/Pelota1.png" alt="Sin imagen"></a>
-            </div>
-            <div class="col-md-6">
-                <p>Hueso de Juguete</p><br>
-                <a href="Producto4.html"><img class="tam_img_prod" src="img/Huesop.png" alt="Sin imagen"></a>
-               
-            </div>
-            <div class="col-md-12">
-                <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
+            <div class="col-12  titulos">
+                <p>Inventario de productos</p>
             </div>
         </div>
 
+        <div class="row">
 
-        
-        
+            <div class="col-md-12 " style="text-align: center;">
+                <table class="table ">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">cod_producto</th>
+                            <th scope="col">nombre</th>
+                            <th scope="col">stock</th>
+                            <th scope="col">descripcion</th>
+                            <th scope="col">foto</th>
+                            <th scope="col">precio</th>
+                            <th scope="col">id_categoria</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1233</td>
+                            <td>Pelota_goma</td>
+                            <td>15</td>
+                            <td>Pelota mediana de goma</td>
+                            <td><img class="tam_img_prod" src="img/Pelota1.png" alt="Sin imagen"></td>
+                            <td>$2500</td>
+                            <td>001</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            
+                        </tr>
+                        <tr>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                            <td>#</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <input type="submit" value="Modificar" class="btn buttom">
+                <input type="reset" value="volver" class="btn buttom">
+                <div>
+                    <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
+                </div>
+            </div>
+
+         </div>
     </div>
 
 
 
 
-
-
-
-
-
-
-
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
-        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
 </body>
-
 </html>
