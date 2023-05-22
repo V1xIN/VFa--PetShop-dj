@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'prueba002D',
+        'USER': 'vfadb',
         'PASSWORD': '12345678',
         'TEST':{
             'USER':'default_test',
