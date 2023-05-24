@@ -94,35 +94,18 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {{for p in listaP}}
                         <tr>
-                            <td>1233</td>
-                            <td>Pelota_goma</td>
-                            <td>15</td>
-                            <td>Pelota mediana de goma</td>
-                            <td><img class="tam_img_prod" src="img/Pelota1.png" alt="Sin imagen"></td>
-                            <td>$2500</td>
-                            <td>001</td>
+                            <td>{{p.codProducto}}</td>
+                            <td>{{p.nombreP}}</td>
+                            <td>{{p.stock}}</td>
+                            <td>{{p.descipcion}}</td>
+                            <td><img class="tam_img_prod" src="{{p.foto.url}}" alt="Sin imagen"></td>
+                            <td>{{p.precio}}</td>
+                            <td>{{p.categoria}}</td>
                             
                         </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                        </tr>
+                        {{endfor}}
                     </tbody>
                 </table>
                 <br><br>
