@@ -4,7 +4,7 @@ $(document).ready(function(){
         var Nusuario = $("#nameU").val().trim();
         var clave = $("#clave").val().trim();
         var Newclave = $("#new_clave").val().trim();
-        
+        var rep_Newclave = $("#rep_new_clave").val().trim();
 
         let letras = /^[a-zA-Z]+$/;
         let msjMostrar = "";
@@ -61,6 +61,12 @@ $(document).ready(function(){
             enviar = true;
         }
 
+        if(rep_Newclave == Newclave){
+            return true
+        }else{
+            msjMostrar += "Las contraseñas nuevas deben ser iguales"
+            enviar = true;
+        }
 
 
 
@@ -68,14 +74,7 @@ $(document).ready(function(){
 
 
 
-
-
-
-
-
-
-
-        if(enviar){
+         if(enviar){
             $("#warnings").html(msjMostrar);
         }
         else{
