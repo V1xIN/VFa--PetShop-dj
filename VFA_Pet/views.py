@@ -67,3 +67,9 @@ def ingresarProd(request):
 
     Producto.objects.create(codprod = codprod , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
     return redirect('anadirProd')
+
+def eliminarProd(request,codProd):
+    producto = Producto.objects.get(codProducto = codProd)
+    producto.delete()
+
+    return redirect('Inventario')
