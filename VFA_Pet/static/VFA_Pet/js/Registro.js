@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#formRegistro").submit(function(a){
-        a.preventDefault();
+        
         var Rut = $("#rut").val().trim();
         var Nusuario = $("#nameU").val().trim();
         var Apellido = $("#Apellido").val().trim();
@@ -103,6 +103,7 @@ $(document).ready(function(){
 
 
         if(enviar){
+            a.preventDefault();
             $("#warnings").html(msjMostrar);
         }
         else{

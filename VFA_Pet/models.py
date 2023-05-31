@@ -20,7 +20,7 @@ class Usuario(models.Model):
     rut = models.CharField(primary_key=True,max_length=12, verbose_name='Rut del usuario')
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=20)
-    correo = models.CharField(max_length=20)
+    correo = models.CharField(max_length=40)
     fono = models.IntegerField()
     clave = models.CharField(max_length=15)
     rol = models.ForeignKey(Rol,on_delete=models.CASCADE)
