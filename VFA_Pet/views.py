@@ -3,7 +3,7 @@ from .models import Producto,Categoria,Usuario,Rol,Pregunta
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
-
+from django.contrib.messages import constants as messages
 # Create your views here.
 
 def anadirProd(request):
@@ -73,7 +73,7 @@ def ingresarProd(request):
 
     catProd = Categoria.objects.get(idCategoria = categoria)
 
-    Producto.objects.create(codprod = codProducto , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
+    Producto.objects.create(codProducto = codprod , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
     return redirect('anadirProd')
 
 def eliminarProd(request,codProd):
@@ -120,5 +120,9 @@ def iniciar_sesion(request):
         login(request, user)
         if(usuario2.tipousuario.idTipoUsuario == 2):
             return redirect('Inventario')
+        else:
+            contexto: ( "usuario":usuario2 )
+            
+            return render(request, 'Comprar', contexto)
             
         
