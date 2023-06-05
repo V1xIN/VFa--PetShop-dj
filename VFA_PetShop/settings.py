@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'VFA_Pet',
+    'rest_framework',
+    'rest_VfaPet',
 ]
 
 MIDDLEWARE = [

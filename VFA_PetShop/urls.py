@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('VFA_Pet.urls')),
+    path('rest/',include('rest_VfaPet.urls')),
 ]
 
 if settings.DEBUG:

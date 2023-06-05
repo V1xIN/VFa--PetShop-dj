@@ -152,7 +152,7 @@ def iniciar_sesion(request):
         if(usuario2.tipousuario.idTipoUsuario == 2):
             return redirect('Inventario')
         else:
-            contexto: ( "usuario":usuario2 )
+            contexto = {"usuario":usuario2 } 
             
             return render(request, 'Comprar', contexto)
             
