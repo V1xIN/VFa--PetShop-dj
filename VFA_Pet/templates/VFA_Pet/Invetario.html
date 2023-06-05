@@ -37,14 +37,15 @@
                             <td><img class="tam_img_prod" src="{{p.foto.url}}" alt="Sin imagen"></td>
                             <td>{{p.precio}}</td>
                             <td>{{p.categoria}}</td>
-                            
+                            <td>
+                                <a href="{% url 'ModificarProd' m.codigoChip %}" class="btn buttom">Modificar</a><br>
+                                <a href="{% url 'eliminarProd' m.codigoChip %}" class="btn buttom">Eliminar</a>
+                            </td>
                         </tr>
                         {{endfor}}
                     </tbody>
                 </table>
                 <br><br>
-                <input type="submit" value="Modificar" class="btn buttom">
-                <input type="reset" value="volver" class="btn buttom">
                 <div>
                     <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
                 </div>

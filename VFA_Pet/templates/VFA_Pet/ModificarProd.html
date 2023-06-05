@@ -16,44 +16,45 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
 
-                        <form action="{% url 'ingresarProd'%}" method="POST" enctype="multipart/form-data" name="anadir_prod">
+                        <form action="{% url 'actualizarProducto'%}" method="POST" enctype="multipart/form-data" name="anadir_prod">
                             {% csrf_token %}
 
                             <div class="form-group">
                                 <label class="form-label">Codigo de Producto: </label>
-                                <input class="form-control" type="number" name="cod_producto">
+                                <input class="form-control" value="{{ datos.codProducto   }}" type="number" name="cod_producto">
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Nombre del Producto: </label>
-                                <input class="form-control" type="text" name="Nombrep" required>
+                                <input class="form-control" value="{{ datos.nombreP   }}" type="text" name="Nombrep" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Stock: </label>
-                                <input class="form-control" type="number" name="Stock" required>
+                                <input class="form-control" value="{{ datos.stock   }}" type="number" name="Stock" required>
                             </div>
                             <div class="form-group">
                                 <label class="form-label">Descripcion: </label>
-                                <input class="form-control" type="text" name="Descripcion" required>
+                                <input class="form-control" value="{{ datos.descipcion   }}" type="text" name="Descripcion" required>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label">Foto del Producto </label>
-                                <input type="file" name="Foto">
-                            </div>
+                
                             <div class="form-group">
                                 <label class="form-label">Precio: </label>
-                                <input class="form-control" type="number" name="Precio" required>
+                                <input class="form-control" value="{{ datos.precio   }}" type="number" name="Precio" required>
                             </div>
                             <div class="form-group">
                                 <select class="form-control" name="ca_productos" id="prod">
-                                    {% for x in categoria %}
-                                    <option value="{{ x.idCategoria }}">{{ x.nombreCa }}</option>
+                                    {% for r in listacategorias %}
+                                        {% if r.idCategoria == datos.producto.idCategoria %}  
+                                            <option value="{{ r.idCategoria }}" selected>{{ r.nombreCa }}</option>
+                                        {% else %}
+                                            <option value="{{ r.idCategoria }}">{{ r.nombreCa }}</option>
+                                        {% endif %}
                                     {% endfor %}
                                 </select>
                             </div>
 
                             <div class="form-group">
-                                <input type="submit" value="Añadir Producto" class="btn buttom">
-                                <input type="reset" value="Limpiar" class="btn buttom">
+                                <button type="submit" class="btn buttom">Modificar</button>
+                                
 
                             </div>
                             <div>

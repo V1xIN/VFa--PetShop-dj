@@ -30,6 +30,17 @@ def Invetario(request):
     }
     return render(request,'VFA_Pet/Invetario.html', contexto)
 
+def ModificarProd(request, codProd):
+    producto = Producto.objects.get(codProducto = codProd)
+    catProd = Categoria.objects.all()
+    contexto = {
+        "datos": producto,
+        "listacategorias": catProd
+    }
+
+    return render(request,'VFA_Pet/ModificarProd.html', contexto)
+
+
 def MenuP(request):
     return render(request,'VFA_Pet/MenuP.html')
 
@@ -69,7 +80,7 @@ def ingresarProd(request):
     descripcion = request.POST['Descripcion']
     foto = request.FILES['Foto']
     precio = request.POST['Precio']
-    categoria = request.POST['productos']
+    categoria = request.POST['ca_productos']
 
     catProd = Categoria.objects.get(idCategoria = categoria)
 
@@ -81,6 +92,26 @@ def eliminarProd(request,codProd):
     producto.delete()
 
     return redirect('Inventario')
+
+def actualizarProducto(request):
+    codprod = request.POST['cod_producto']
+    nProd = request.POST['Nombrep']
+    stockP = request.POST['Stock']
+    descrP = request.POST['Descripcion']
+    precioP = request.POST['Precio']
+    catPro = request.POST['ca_productos']
+
+    producto = Producto.objects.get(codProducto = codprod)
+    producto.nombreP = nProd
+    producto.stock = stockP
+    producto.descipcion = descrP
+    producto.precio = precioP
+    registrocat = Categoria.objects.get(idCategoria = catPro)
+    producto.categoria = registrocat
+
+    producto.save()
+    return redirect('Inventario')
+
 
 def ingresarUser(request):
     rut = request.POST['rut']
@@ -125,4 +156,4 @@ def iniciar_sesion(request):
             
             return render(request, 'Comprar', contexto)
             
-        
+
