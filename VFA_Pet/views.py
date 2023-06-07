@@ -149,7 +149,7 @@ def iniciar_sesion(request):
     user = authenticate(username=usuario1, password=contra1)
     if user is not None:
         login(request, user)
-        if(usuario2.tipousuario.idTipoUsuario == 2):
+        if(usuario2.rol.idRol == 2):
             return redirect('Inventario')
         else:
             contexto = {"usuario":usuario2 } 

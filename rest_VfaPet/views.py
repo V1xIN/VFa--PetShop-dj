@@ -41,3 +41,26 @@ def lista_Venta(request):
         
         else:
             return Response(serializer.errors, status= status.HTTP_400_BAD_REQUEST)
+@api_view(['GET','PUT','DELETE'])
+
+def detalle_usuario(request,rut):
+
+    try:
+        usuario = Usuario.objects.get(rut=rut)
+    except Usuario.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer = Usuarioserializer(usuario)
+        return Response(serializer.data)
+    if request.method == 'PUT':
+        data = JSONParser().parse(request)
+        serializer = Usuarioserializer(usuario, data = data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+            return Response(serializer.error, status= status.HTTP_400_BAD_REQUEST)    
+    elif request.method == 'DELETE':
+        usuario.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+

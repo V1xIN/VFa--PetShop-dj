@@ -1,8 +1,9 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import lista_Usuario,lista_Venta
+from .views import detalle_usuario,lista_Usuario,lista_Venta
 urlpatterns = [
     path('lista_Usuario',lista_Usuario,name="lista_Usuario"),
     path('lista_Venta',lista_Venta,name="lista_Venta"),
+    path('detalle_usuario/<rut>',detalle_usuario,name="detalle_usuario")
 
 ]
