@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#formMod_Contra").submit(function(c){
-        c.preventDefault();
+        
         var Nusuario = $("#nameU").val().trim();
         var clave = $("#clave").val().trim();
         var Newclave = $("#new_clave").val().trim();
@@ -75,6 +75,7 @@ $(document).ready(function(){
 
 
          if(enviar){
+            c.preventDefault();
             $("#warnings").html(msjMostrar);
         }
         else{

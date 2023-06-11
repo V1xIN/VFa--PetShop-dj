@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{for p in listaP}}
+                        {%for p in listaP%}
                         <tr>
                             <td>{{p.codProducto}}</td>
                             <td>{{p.nombreP}}</td>
@@ -42,12 +42,12 @@
                                 <a href="{% url 'eliminarProd' m.codigoChip %}" class="btn buttom">Eliminar</a>
                             </td>
                         </tr>
-                        {{endfor}}
+                        {%endfor%}
                     </tbody>
                 </table>
                 <br><br>
                 <div>
-                    <img class="tam_logo_mini" src="img/logofinal.png" alt="Sin imagen">
+                    <img class="tam_logo_mini" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="Sin imagen">
                 </div>
             </div>
 

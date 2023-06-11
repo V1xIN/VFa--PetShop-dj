@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#formP").submit(function(p){
-        p.preventDefault();
+        
         var Nusuario = $("#nameU").val().trim();
         var clave = $("#clave").val().trim();
 
@@ -47,6 +47,7 @@ $(document).ready(function(){
         }
         
         if(enviar){
+            p.preventDefault();
             $("#warnings").html(msjMostrar);
         }
         else{
@@ -71,6 +72,7 @@ $(document).ready(function(){
     
     });
     function esMayuscula(letra){
+
         if(letra == letra.toUpperCase()){
             return true
         }

@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#formRe").submit(function(r){
-        r.preventDefault();
+        
         var Nusuario = $("#nameU").val().trim();
         var Respuesta = $("#Respuesta").val().trim();
 
@@ -36,6 +36,7 @@ $(document).ready(function(){
 
 
         if(enviar){
+            r.preventDefault();
             $("#warnings").html(msjMostrar);
         }
         else{

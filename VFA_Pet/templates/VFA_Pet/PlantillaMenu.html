@@ -15,7 +15,7 @@
     <ul class="nav ">
               
         <li class="nav-item">
-            <a class="nav-link active " href="'Menup'"><img class="tam_logo_micro" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="sin imagen"></a>
+            <a href=""><img class="tam_logo_micro" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="sin imagen"></a>
         </li>
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle letra_menu" href="#" id="navbarDropdown" role="button"
@@ -23,30 +23,18 @@
                 Usuario
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="">Recuperar Contraseña</a>
-                <a class="dropdown-item" href="">Registro de Usuario</a>
+                <a class="dropdown-item" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
+                <a class="dropdown-item" href="{% url 'RegistroUsuario'   %}">Registro de Usuario</a>
  
-                <a class="dropdown-item" href="">Modificar Contraseña</a>
-
-            </div>
-        </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle letra_menu" href="" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-                Catálogo
-            </a>
-            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-                <a class="dropdown-item " href="">Todos los productos</a>
-                <a class="dropdown-item " href="">Collar para Mascota</a>
-                <a class="dropdown-item" href="">Plato para comida</a>
-                <a class="dropdown-item" href="">Pelota de goma</a>
-                <a class="dropdown-item" href="">Hueso de juguete</a>
                 
 
             </div>
         </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link active letra_menu" href="{% url 'Comprar' %}"  > Menú </a>
+        </li>
         <li class="nav-item">
-            <a class="nav-link active letra_menu" href="">Carrito</a>
+            <a class="nav-link active letra_menu" href="{% url 'Carrito' %}">Carrito</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active letra_menu" href="">Historial de compras</a>
@@ -62,7 +50,7 @@
                 <a class="dropdown-item" href="RegistroUsuario.html">Registro de Usuario</a>
                 <a class="dropdown-item" href="RecuperarContra.html">Recuperar Contraseña</a>
                 <a class="dropdown-item" href="Ventas.html">Ventas</a>
-                <a class="dropdown-item" href="Invetario.html">Inventario</a>
+                <a class="dropdown-item" href="{% url 'Invetario' %}">Inventario</a>
                 <a class="dropdown-item" href="añadirProd.html">Añadir Producto</a>
                 <a class="dropdown-item" href="ModificarContra.html">Modificar Contraseña</a>
 
