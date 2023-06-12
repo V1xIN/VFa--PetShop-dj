@@ -7,18 +7,18 @@
         <div class="row">
         
             <div class="col-12 titulos" style="margin-top: 30px;">
-                <p>Collar para Mascota</p>
+                <p>{{ prod.nombreP }}</p>
                 <br>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-4 ">
-                <img class="tam_img_prod_interior" src="img/Collar1.png" alt="sin imagen">
+                <img class="tam_img_prod_interior" src="{{ prod.foto.url }}" alt="sin imagen">
             </div>
             <div class="col-md-4">
-                <h1>$3500 CLP</h1>
-                <h6>Stock: 10</h6>
+                <h1>${{ prod.precio }}CLP</h1>
+                <h6>Stock: {{ prod.stock }}</h6>
 
                 <h5>Talla:<h5>
                 <select name="id_pregunta">
@@ -35,8 +35,7 @@
             <div class="col-md-2"></div>
             
             <div class="col-md-6 letra_descripcion">
-                <p>Descripcion: <br><br> Collar para mascota de 
-                    cuero sintetico y medalla de acero inoxidable.
+                <p>Descripcion: <br><br> {{ prod.descipcion }}
                 </p>
             </div>
             <div class="col-md-6">

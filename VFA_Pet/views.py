@@ -3,7 +3,7 @@ from .models import Producto,Categoria,Usuario,Rol,Pregunta,Venta
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
-from django.contrib.messages import constants as messages
+from django.contrib import messages
 # Create your views here.
 
 def anadirProd(request):
@@ -51,8 +51,12 @@ def MenuP(request):
 def ModificarContra(request):
     return render(request,'VFA_Pet/ModificarContra.html')
 
-def Producto1(request):
-    return render(request,'VFA_Pet/Producto1.html')
+def Producto1(request,codigo):
+    producto = Producto.objects.get(codProducto = codigo)
+    contexto = {
+        "prod": producto
+    }
+    return render(request,'VFA_Pet/Producto1.html',contexto)
 
 def Producto2(request):
     return render(request,'VFA_Pet/Producto2.html')
@@ -154,7 +158,7 @@ def iniciar_sesion(request):
     if not pass_valida:
         messages.error(request,'El usuario o la contraseña son incorrectos')
         return redirect('MenuP')
-    usuario2 = Usuario.objects.get(username = usuario1,contrasennia = contra1)
+    usuario2 = Usuario.objects.get(correo = usuario1,clave = contra1)
     user = authenticate(username=usuario1, password=contra1)
     if user is not None:
         login(request, user)
@@ -163,6 +167,6 @@ def iniciar_sesion(request):
         else:
             contexto = {"usuario":usuario2 } 
             
-            return render(request, 'Comprar', contexto)
+            return render(request, 'VFA_Pet/Comprar.html', contexto)
             
 

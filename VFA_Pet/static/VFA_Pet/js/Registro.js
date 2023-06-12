@@ -58,11 +58,11 @@ $(document).ready(function(){
         }
 
 
-
+/*
         if(!email.test(Correo)){
             msjMostrar = msjMostrar + "El Correo no es valido<br>";
             enviar = true;
-        }
+        }*/
 
         if(!phoneNumber.test(Telefono)){
             msjMostrar = msjMostrar + "El número de teléfono ingresado no es valido<br>";

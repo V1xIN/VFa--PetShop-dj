@@ -1,19 +1,17 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import actualizarProducto,eliminarProd,ingresarUser,ingresarProd,anadirProd, Carrito, Comprar, HistorialCompras, Inventario, MenuP, ModificarContra, Producto1, Producto2, Producto3, Producto4, RecuperarContra, RegistroUsuario, Ventas, ModificarProd
+from .views import iniciar_sesion,actualizarProducto,eliminarProd,ingresarUser,ingresarProd,anadirProd, Carrito, Comprar, HistorialCompras, Inventario, MenuP, ModificarContra, Producto1, Producto2, Producto3, Producto4, RecuperarContra, RegistroUsuario, Ventas, ModificarProd
 
 urlpatterns = [
+    path('iniciar_sesion',iniciar_sesion,name="iniciar_sesion"),
     path('anadirProd',anadirProd,name="anadirProd"),
     path('Carrito',Carrito,name="Carrito"),
-    path('Comprar',Comprar,name="Comprar"),
+    path('',Comprar,name="Comprar"),
     path('HistorialCompras',HistorialCompras,name="HistorialCompras"),
     path('Inventario',Inventario,name="Inventario"),
-    path('',MenuP,name="MenuP"),
+    path('MenuP',MenuP,name="MenuP"),
     path('ModificarContra',ModificarContra,name="ModificarContra"),
-    path('Producto1',Producto1,name="Producto1"),
-    path('Producto2',Producto2,name="Producto2"),
-    path('Producto3',Producto3,name="Producto3"),
-    path('Producto4',Producto4,name="Producto4"),
+    path('Producto1/<int:codigo>',Producto1,name="Producto1"),
     path('RecuperarContra',RecuperarContra,name="RecuperarContra"),
     path('RegistroUsuario',RegistroUsuario,name="RegistroUsuario"),
     path('Ventas',Ventas,name="Ventas"),

@@ -12,16 +12,17 @@
             </div>
         </div>
         <div class="row letra_form" >
-            <div class="col-6">
-                {%for p in listaprodm%}
+            {%for p in listaprodm%}
+            <div class="col-3">                
                 <br>
                 <p>{{p.nombreP}}</p>
-                <a href="Producto1.html"><img class="tam_img_prod" src="{{p.foto.url}}" alt="Sin imagen"></a>
+                <a href="{% url 'Producto1' p.codProducto %}"><img class="tam_img_prod" src="{{p.foto.url}}" alt="Sin imagen"></a>
                 <p>${{p.precio}}</p>
                 <input type="submit" value="añadir al carro" class="btn buttom">
                 
-                {%endfor%}
+                
             </div>
+            {%endfor%}
         </div>
 
 
