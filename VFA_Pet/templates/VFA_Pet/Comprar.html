@@ -12,28 +12,15 @@
             </div>
         </div>
         <div class="row letra_form" >
-            <div class="col-md-6">
-                <p>Collar para Mascota</p><br>
-                <a href="Producto1.html"><img class="tam_img_prod" src="{% static 'VFA_Pet/img/Collar1.png' %}" alt="Sin imagen"></a>
+            <div class="col-6">
+                {%for p in listaprodm%}
+                <br>
+                <p>{{p.nombreP}}</p>
+                <a href="Producto1.html"><img class="tam_img_prod" src="{{p.foto.url}}" alt="Sin imagen"></a>
+                <p>${{p.precio}}</p>
+                <input type="submit" value="añadir al carro" class="btn buttom">
                 
-            </div>
-            <div class="col-md-6">
-                <p>Plato para Comida</p><br>
-                <a href="Producto2.html"><img class="tam_img_prod" href="Producto2.html" src="{% static 'VFA_Pet/img/Plato.png' %}" alt="Sin imagen"></a>
-                <br><br><br>
-                
-            </div>
-            <div class="col-md-6">
-                <p>Pelota de Goma</p><br>
-                <a href="Producto3.html"><img class="tam_img_prod"  src="{% static 'VFA_Pet/img/Pelota1.png' %}" alt="Sin imagen"></a>
-            </div>
-            <div class="col-md-6">
-                <p>Hueso de Juguete</p><br>
-                <a href="Producto4.html"><img class="tam_img_prod" src="{% static 'VFA_Pet/img/Huesop' %}" alt="Sin imagen"></a>
-               
-            </div>
-            <div class="col-md-12">
-                <img class="tam_logo_mini" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="Sin imagen">
+                {%endfor%}
             </div>
         </div>
 

@@ -18,17 +18,21 @@ def Carrito(request):
     return render(request,'VFA_Pet/Carrito.html')
 
 def Comprar(request):
-    return render(request,'VFA_Pet/Comprar.html')
+    prod = Producto.objects.all()
+    contexto ={
+        "listaprodm": prod
+    }
+    return render(request,'VFA_Pet/Comprar.html',contexto)
 
 def HistorialCompras(request):
     return render(request,'VFA_Pet/HistorialCompras.html')
 
-def Invetario(request):
+def Inventario(request):
     invProd = Producto.objects.all()
     contexto ={
         "listaP": invProd
     }
-    return render(request,'VFA_Pet/Invetario.html', contexto)
+    return render(request,'VFA_Pet/Inventario.html', contexto)
 
 def ModificarProd(request, codProd):
     producto = Producto.objects.get(codProducto = codProd)
@@ -71,7 +75,12 @@ def RegistroUsuario(request):
     return render(request,'VFA_Pet/RegistroUsuario.html',contexto)
 
 def Ventas(request):
-    return render(request,'VFA_Pet/Ventas.html')
+    Ventas = Venta.objects.all()
+    contexto ={
+        "listaVentas": Ventas
+    }
+    
+    return render(request,'VFA_Pet/Ventas.html',contexto)
 
 def ingresarProd(request):
     codprod = request.POST['cod_producto']

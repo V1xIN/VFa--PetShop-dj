@@ -82,7 +82,7 @@ class Producto(models.Model):
     codProducto = models.AutoField(primary_key=True)
     nombreP = models.CharField(max_length=20)
     stock = models.IntegerField()
-    descipcion = models.CharField(max_length=20)
+    descipcion = models.CharField(max_length=100)
     foto = models.ImageField(upload_to="VFA_PetShop")
     precio = models.IntegerField()
     categoria = models.ForeignKey(Categoria,on_delete=models.CASCADE)

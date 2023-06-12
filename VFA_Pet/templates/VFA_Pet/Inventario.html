@@ -38,8 +38,8 @@
                             <td>{{p.precio}}</td>
                             <td>{{p.categoria}}</td>
                             <td>
-                                <a href="{% url 'ModificarProd' m.codigoChip %}" class="btn buttom">Modificar</a><br>
-                                <a href="{% url 'eliminarProd' m.codigoChip %}" class="btn buttom">Eliminar</a>
+                                <a href="{% url 'ModificarProd' p.codProducto %}" class="btn buttom">Modificar</a><br>
+                                <a href="{% url 'eliminarProd' p.codProducto %}" class="btn buttom">Eliminar</a>
                             </td>
                         </tr>
                         {%endfor%}

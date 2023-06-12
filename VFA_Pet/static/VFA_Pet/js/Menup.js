@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $("#formP").submit(function(p){
         
-        var Nusuario = $("#nameU").val().trim();
+        var Nusuario = $("#correo").val().trim();
         var clave = $("#clave").val().trim();
 
         let msjMostrar = "";
