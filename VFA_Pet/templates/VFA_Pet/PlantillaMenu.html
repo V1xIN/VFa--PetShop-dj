@@ -13,22 +13,15 @@
 
 <body>
     <ul class="nav ">
-              
+       
         <li class="nav-item">
             <a href="{% url 'Comprar' %}"><img class="tam_logo_micro" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="sin imagen"></a>
         </li>
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle letra_menu" href="#" id="navbarDropdown" role="button"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Usuario
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
-                <a class="dropdown-item" href="{% url 'RegistroUsuario'   %}">Registro de Usuario</a>
- 
-                
-
-            </div>
+        <li class="nav-item">
+            <a class="nav-link  letra_menu" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link  letra_menu" href="{% url 'RegistroUsuario'   %}">Registro</a>
         </li>
         <li class="nav-item">
             <a class="nav-link active letra_menu" href="{% url 'Carrito' %}">Carrito</a>
@@ -51,9 +44,19 @@
 
             </div>
         </li>
+        {% if user.is_authenticated %}
+        <li>
+            <a class="nav-link  letra_menu" href="#"> Bienvenido:{{ user.username }}</a>
+        </li class="nav-item">
         <li class="nav-item">
-            <a class="nav-link active letra_menu" href="{% url 'MenuP' %}">Login</a>
+            <a class=" nav-link  letra_menu" href="{% url 'logout' %}"> Cerrar sesión </a>
+            
         </li>
+        {% else %}
+        <li  class="nav-item" >
+            <a class="nav-link  letra_menu" href="{% url 'login' %}"> Iniciar sesión </a>
+        </li>
+        {% endif %}
         
     </ul>
     {% block cuerpo %}

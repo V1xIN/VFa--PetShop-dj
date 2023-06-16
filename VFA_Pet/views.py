@@ -141,6 +141,7 @@ def ingresarUser(request):
 
     Usuario.objects.create(rut = rut , nombre = nombreu , apellido = apellido, correo = correo, fono = fono, clave = clave, rol = rolU, pregunta = idpreg, respuesta = respuesta)
     user = User.objects.create_user(correo, correo, clave)
+    user.first_name = nombreu
     user.last_name = apellido
     user.save()
     return redirect('RegistroUsuario')

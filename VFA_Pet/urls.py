@@ -3,13 +3,13 @@ from django.urls import path, include
 from .views import iniciar_sesion,actualizarProducto,eliminarProd,ingresarUser,ingresarProd,anadirProd, Carrito, Comprar, HistorialCompras, Inventario, MenuP, ModificarContra, Producto1, Producto2, Producto3, Producto4, RecuperarContra, RegistroUsuario, Ventas, ModificarProd
 
 urlpatterns = [
+    path('MenuP',MenuP,name="MenuP"),
+    path('',Comprar,name="Comprar"),
     path('iniciar_sesion',iniciar_sesion,name="iniciar_sesion"),
     path('anadirProd',anadirProd,name="anadirProd"),
     path('Carrito',Carrito,name="Carrito"),
-    path('',Comprar,name="Comprar"),
     path('HistorialCompras',HistorialCompras,name="HistorialCompras"),
     path('Inventario',Inventario,name="Inventario"),
-    path('MenuP',MenuP,name="MenuP"),
     path('ModificarContra',ModificarContra,name="ModificarContra"),
     path('Producto1/<int:codigo>',Producto1,name="Producto1"),
     path('RecuperarContra',RecuperarContra,name="RecuperarContra"),
