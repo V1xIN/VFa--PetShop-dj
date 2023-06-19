@@ -154,25 +154,7 @@ def ingresarUser(request):
     messages.success(request, "Usuario Registrado con exito")
     return redirect('RegistroUsuario')
 
-def actualizarProducto(request):
-    contraAct = request.POST['cod_producto']
-    contranew = request.POST['Nombrep']
-    stockP = request.POST['Stock']
-    descrP = request.POST['Descripcion']
-    precioP = request.POST['Precio']
-    catPro = request.POST['ca_productos']
 
-    producto = Producto.objects.get(codProducto = codprod)
-    producto.nombreP = nProd
-    producto.stock = stockP
-    producto.descipcion = descrP
-    producto.precio = precioP
-    registrocat = Categoria.objects.get(idCategoria = catPro)
-    producto.categoria = registrocat
-
-    producto.save()
-    messages.success(request, "Producto Actualizado con exito")
-    return redirect('Comprar')
 
 
 
