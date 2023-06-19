@@ -38,8 +38,12 @@
                             <td>{{p.precio}}</td>
                             <td>{{p.categoria}}</td>
                             <td>
+                                {% if perms.VFA_Pet.change_producto %}
                                 <a href="{% url 'ModificarProd' p.codProducto %}" class="btn buttom">Modificar</a><br><br>
+                                {% endif %}
+                                {% if perms.VFA_Pet.delete_producto %}
                                 <a href="{% url 'eliminarProd' p.codProducto %}" class="btn buttom">Eliminar</a>
+                                {% endif %}
                             </td>
                         </tr>
                         {%endfor%}

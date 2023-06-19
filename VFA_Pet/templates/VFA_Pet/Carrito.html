@@ -22,52 +22,34 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if request.session.carrito.items %}
+                        {% for key, value in request.session.carrito.items %}
                         <tr>
-                            <td>001</td>
-                            <td>Hueso_juguete</td>
-                            <td>3</td>
-                            <td>$4500</td>
+                            <td>{{value.producto_cod}}</td>
+                            <td>{{value.nombre}}</td>
+                            <td>{{value.acumulado}}</td>
+                            <td>{{value.}}
+                                <a href="{% url 'add' producto.id %}" class="btn buttom">+</a>
+                                <a href="{% url 'Res' producto.id %}" class="btn buttom">-</a>
+                            </td>
                             <td>$5000</td>
                             
                         </tr>
+                        {% endfor %}
+                        {% else %}
                         <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            
+                            <td> <div class="alert alert-danger text-center">Sin Productos</div></td>
                         </tr>
+                        {% endif %}
                         <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            
-                        </tr>
-                        <tr>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            <td>#</td>
-                            
+                            <th>Total</th>
+                            <td>${{total_carrito}}</td>
                         </tr>
                     </tbody>
                 </table>
                 <br><br>
-                <input type="submit" value="Pagar" class="btn buttom">
-                <input type="submit" value="Editar" class="btn buttom">
-                <input type="reset" value="Eliminar" class="btn buttom">
+                <a href="{% url 'limp' %}" class="btn buttom">Limpiar</a>
+                <a href="" class="btn buttom">Guardar</a>
                 <div>
                     <img class="tam_logo_mini" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="Sin imagen">
                 </div>

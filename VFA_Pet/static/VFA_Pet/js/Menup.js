@@ -6,26 +6,13 @@ $(document).ready(function(){
 
         let msjMostrar = "";
         let enviar = false;
-        let letras = /^[a-zA-Z]+$/;
         let valClave= /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/
+        let email = /^[a-zA-Z0-9\._-]+@[a-zA-Z0-9-]{2,}[.][a-zA-Z]{2,4}$/;
 
-
-        
-         if(Nusuario.length < 4 || Nusuario.length > 12){
-            msjMostrar = msjMostrar + "El Usuario debe tener entre 4 y 12 caracteres<br>";
-            enviar = true;
-        } 
-        var letra = Nusuario.charAt(0);
-        if(!esMayuscula(letra)){
-            msjMostrar += "El Usuario debe comenzar con mayúscla<br>";
+        if(!email.test(Nusuario)){
+            msjMostrar = msjMostrar + "El Correo no es valido<br>";
             enviar = true;
         }
-        if(!letras.test(Nusuario)){
-            msjMostrar = msjMostrar + "El Usuario solo debe contener letras<br>";
-            enviar = true;
-        }
-        
-        
         
         if(!valClave.test(clave)){
             msjMostrar = msjMostrar + "La Contraseña debe tener al menos un número o carácter especial y al menos una letra minúscula<br>";

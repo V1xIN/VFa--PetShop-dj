@@ -18,37 +18,34 @@
                 <table class="table ">
                     <thead class="thead-dark">
                         <tr>
-                            <th scope="col">cod_venta</th>
-                            <th scope="col">rut</th>
-                            <th scope="col">fecha_venta</th>
-                            <th scope="col">fecha_entrega</th>
-                            <th scope="col">estado_p</th>
-                            <th scope="col">id_direccion</th>
-                            <th scope="col">total</th>
-                            <th scope="col">carrito</th>
-                            <th scope="col">estatus</th>
+                            <th scope="col">Producto</th>
+                            <th scope="col">cantidad</th>
+                            <th scope="col">subtotal</th>
+                            <th scope="col">usuario</th>
+                            <th scope="col">Fecha_venta</th>
+                            <th scope="col">Fecha_entrega</th>
+                            <th scope="col">status</th>
+                            <th scope="col">direccion</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {%for v in listaVentas%}
                         <tr>
-                            <td>{{v.codVenta}}</td>
+                            {%for dt in listadetalle%}
+                            <td>{{dt.producto}}</td>
+                            <td>{{dt.cantidad}}</td>
+                            <td>{{dt.subtotal}}</td>
+                            {% endfor %}
+                            {%for v in listaVentas%}
                             <td>{{v.usuario}}</td>
                             <td>{{v.fVenta}}</td>
                             <td>{{v.fEntrega}}</td>
-                            <td>{{v.estadoP}}</td>
-                            <td>{{v.direccion}}</td>
-                            <td>{{v.total}}</td>
-                            <td>{{v.carrito}}</td>
                             <td>{{v.status}}</td>
+                            <td>{{v.direccion}}</td>
+                            {% endfor %}
                         </tr>
-                        {% endfor %}
                     </tbody>
                 </table>
                 <br><br>
-
-                <input type="submit" value="Modificar" class="btn buttom">
-                <input type="reset" value="volver" class="btn buttom">
                 <div>
                     <img class="tam_logo_mini" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="Sin imagen">
                 </div>

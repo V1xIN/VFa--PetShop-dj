@@ -18,7 +18,7 @@
             <a href="{% url 'Comprar' %}"><img class="tam_logo_micro" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="sin imagen"></a>
         </li>
         <li class="nav-item">
-            <a class="nav-link  letra_menu" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
+            <a class="nav-link  letra_menu" href="{% url 'ModificarContra'   %}">ModificarContra Contraseña</a>
         </li>
         <li class="nav-item">
             <a class="nav-link  letra_menu" href="{% url 'RegistroUsuario'   %}">Registro</a>
@@ -26,24 +26,25 @@
         <li class="nav-item">
             <a class="nav-link active letra_menu" href="{% url 'Carrito' %}">Carrito</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active letra_menu" href="{% url 'HistorialCompras' %}">Historial de compras</a>
-        </li>
+        {% if perms.VFA_Pet.view_venta %}
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle letra_menu"  id="navbarDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Admin
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="{% url 'RegistroUsuario'   %}">Registro de Usuario</a>
-                <a class="dropdown-item" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
+                {% if perms.VFA_Pet.view_venta %}
                 <a class="dropdown-item" href="{% url 'Ventas' %}">Ventas</a>
+                {% endif %}
+                {% if perms.VFA_Pet.view_producto %}
                 <a class="dropdown-item" href="{% url 'Inventario' %}">Inventario</a>
+                {% endif %}
+                {% if perms.VFA_Pet.add_producto %}
                 <a class="dropdown-item" href="{% url 'anadirProd' %}">Añadir Producto</a>
-                <a class="dropdown-item" href="{% url 'ModificarContra' %}">Modificar Contraseña</a>
-
+                {% endif %}
             </div>
         </li>
+        {% endif %}
         {% if user.is_authenticated %}
         <li>
             <a class="nav-link  letra_menu" href="#"> Bienvenido:{{ user.username }}</a>
@@ -59,9 +60,21 @@
         {% endif %}
         
     </ul>
-    {% block cuerpo %}
     
+    {% block cuerpo %}
     {% endblock cuerpo %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    {% if messages %}
+        {% for m in messages  %}
+            <script>
+                Swal.fire({
+                    "tittle": "Felicitaciones",
+                    "text": "{{m}}",
+                    "icon": "success"
+                })
+            </script>
+        {% endfor %}
+    {% endif %}
     </body>
 
 </html>

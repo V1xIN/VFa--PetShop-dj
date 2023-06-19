@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect
-from .models import Producto,Categoria,Usuario,Rol,Pregunta,Venta
+from .models import Producto,Categoria,Usuario,Rol,Pregunta,Venta,DetalleVenta
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 from django.contrib.auth import authenticate,login, logout
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
 # Create your views here.
-
+@permission_required('VFA_Pet.add_producto')
 def anadirProd(request):
     arreglocat = Categoria.objects.all()
     contexto ={
@@ -27,13 +28,14 @@ def Comprar(request):
 def HistorialCompras(request):
     return render(request,'VFA_Pet/HistorialCompras.html')
 
+@permission_required('VFA_Pet.view_producto')
 def Inventario(request):
     invProd = Producto.objects.all()
     contexto ={
         "listaP": invProd
     }
     return render(request,'VFA_Pet/Inventario.html', contexto)
-
+@permission_required('VFA_Pet.change_producto')
 def ModificarProd(request, codProd):
     producto = Producto.objects.get(codProducto = codProd)
     catProd = Categoria.objects.all()
@@ -41,7 +43,6 @@ def ModificarProd(request, codProd):
         "datos": producto,
         "listacategorias": catProd
     }
-
     return render(request,'VFA_Pet/ModificarProd.html', contexto)
 
 
@@ -78,14 +79,18 @@ def RegistroUsuario(request):
     }
     return render(request,'VFA_Pet/RegistroUsuario.html',contexto)
 
+@permission_required('VFA_Pet.view_venta')
 def Ventas(request):
     Ventas = Venta.objects.all()
+    detventa = DetalleVenta.objects.all()
     contexto ={
-        "listaVentas": Ventas
+        "listaVentas": Ventas,
+        "listadetalle": detventa
     }
     
     return render(request,'VFA_Pet/Ventas.html',contexto)
 
+@permission_required('VFA_Pet.add_producto')
 def ingresarProd(request):
     codprod = request.POST['cod_producto']
     nombrep = request.POST['Nombrep']
@@ -94,18 +99,19 @@ def ingresarProd(request):
     foto = request.FILES['Foto']
     precio = request.POST['Precio']
     categoria = request.POST['ca_productos']
-
     catProd = Categoria.objects.get(idCategoria = categoria)
-
     Producto.objects.create(codProducto = codprod , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
-    return redirect('anadirProd')
+    messages.success(request, "Producto añadido con exito")
+    return redirect('Inventario')
 
+@permission_required('VFA_Pet.delete_producto')
 def eliminarProd(request,codProd):
     producto = Producto.objects.get(codProducto = codProd)
     producto.delete()
-
+    messages.success(request, "Producto Eliminado con exito")
     return redirect('Inventario')
 
+@permission_required('VFA_Pet.change_producto')
 def actualizarProducto(request):
     codprod = request.POST['cod_producto']
     nProd = request.POST['Nombrep']
@@ -123,6 +129,7 @@ def actualizarProducto(request):
     producto.categoria = registrocat
 
     producto.save()
+    messages.success(request, "Producto Actualizado con exito")
     return redirect('Inventario')
 
 
@@ -144,7 +151,30 @@ def ingresarUser(request):
     user.first_name = nombreu
     user.last_name = apellido
     user.save()
+    messages.success(request, "Usuario Registrado con exito")
     return redirect('RegistroUsuario')
+
+def actualizarProducto(request):
+    contraAct = request.POST['cod_producto']
+    contranew = request.POST['Nombrep']
+    stockP = request.POST['Stock']
+    descrP = request.POST['Descripcion']
+    precioP = request.POST['Precio']
+    catPro = request.POST['ca_productos']
+
+    producto = Producto.objects.get(codProducto = codprod)
+    producto.nombreP = nProd
+    producto.stock = stockP
+    producto.descipcion = descrP
+    producto.precio = precioP
+    registrocat = Categoria.objects.get(idCategoria = catPro)
+    producto.categoria = registrocat
+
+    producto.save()
+    messages.success(request, "Producto Actualizado con exito")
+    return redirect('Comprar')
+
+
 
 def iniciar_sesion(request):
     usuario1 = request.POST['correo']
@@ -159,6 +189,7 @@ def iniciar_sesion(request):
     if not pass_valida:
         messages.error(request,'El usuario o la contraseña son incorrectos')
         return redirect('MenuP')
+    
     usuario2 = Usuario.objects.get(correo = usuario1,clave = contra1)
     user = authenticate(username=usuario1, password=contra1)
     if user is not None:
@@ -170,4 +201,25 @@ def iniciar_sesion(request):
             
             return render(request, 'VFA_Pet/Comprar.html', contexto)
             
+def agregar_prod(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(codProducto = producto_id)
+    carrito.agregar_prod(producto)
+    return redirect('Carrito')
 
+def eliminar_prod(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(codProducto = producto_id)
+    carrito.eliminar(producto)
+    return redirect('Carrito')
+
+def restar_prod(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(codProducto = producto_id)
+    carrito.eliminar(producto)
+    return redirect('Carrito')
+
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect('Carrito')

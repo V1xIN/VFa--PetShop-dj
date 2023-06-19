@@ -57,12 +57,10 @@ $(document).ready(function(){
             enviar = true;
         }
 
-
-/*
-        if(!email.test(Correo)){
+         if(!email.test(Correo)){
             msjMostrar = msjMostrar + "El Correo no es valido<br>";
             enviar = true;
-        }*/
+        }
 
         if(!phoneNumber.test(Telefono)){
             msjMostrar = msjMostrar + "El número de teléfono ingresado no es valido<br>";
@@ -84,8 +82,8 @@ $(document).ready(function(){
             enviar = true;
         }
 
-        if(Respuesta.length < 6 || Nusuario.length > 15){
-            msjMostrar = msjMostrar + "La Respuesta debe tener entre 6 y 15 caracteres<br>";
+        if(Respuesta.length < 2 || Nusuario.length > 15){
+            msjMostrar = msjMostrar + "La Respuesta debe tener entre 2 y 15 caracteres<br>";
             enviar = true;
         }
         if(!letras.test(Respuesta)){

@@ -29,12 +29,6 @@ $(document).ready(function(){
             msjMostrar = msjMostrar + "La Respuesta solo debe contener letras<br>";
             enviar = true;
         }
-
-
-
-
-
-
         if(enviar){
             r.preventDefault();
             $("#warnings").html(msjMostrar);

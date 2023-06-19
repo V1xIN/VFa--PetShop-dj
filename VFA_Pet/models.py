@@ -25,7 +25,7 @@ class Usuario(models.Model):
     clave = models.CharField(max_length=15)
     rol = models.ForeignKey(Rol,on_delete=models.CASCADE)
     pregunta = models.ForeignKey(Pregunta,on_delete=models.CASCADE)
-    respuesta = models.CharField(max_length=20)
+    respuesta = models.CharField(max_length=50)
 
     def __str__(self) -> str:
         return self.nombre
@@ -53,7 +53,7 @@ class Direccion(models.Model):
     numero = models.IntegerField()
     casa = models.IntegerField()
     dpto = models.IntegerField()
-    piso = models.IntegerField(10)
+    piso = models.IntegerField()
 
     def __str__(self) -> str:
         return self.calle

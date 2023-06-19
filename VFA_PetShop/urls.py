@@ -19,11 +19,17 @@ from django.urls import path,include
 from django.conf import settings
 from django.conf.urls.static import static
 
+from VFA_Pet.views import agregar_prod,eliminar_prod,restar_prod,limpiar_carrito
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('VFA_Pet.urls')),
     path('rest/',include('rest_VfaPet.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
+    path('agregar_prod/<int:producto_id>/', agregar_prod,name="add"),
+    path('eliminar/<int:producto_id>', eliminar_prod,name="Del"),
+    path('restar/<int:producto_id>', restar_prod,name="Res"),
+    path('limpiar', limpiar_carrito, name="limp"),
 ]
 
 if settings.DEBUG:

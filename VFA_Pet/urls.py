@@ -20,4 +20,5 @@ urlpatterns = [
     path('eliminarProd/<int:codProd>',eliminarProd,name="eliminarProd"),
     path('ModificarProd/<int:codProd>',ModificarProd,name="ModificarProd"),
     path('actualizarProducto',actualizarProducto,name="actualizarProducto"),
+    
 ]

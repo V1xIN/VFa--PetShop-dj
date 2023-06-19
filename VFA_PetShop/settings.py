@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 LOGIN_REDIRECT_URL= '/'
 LOGOUT_REDIRECT_URL= '/'
 
-
+MESSAGE_STORAGE = "django.contrib.messages.storage.cookie.CookieStorage"
 
 
 # Application definition
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'VFA_Pet',
     'rest_framework',
     'rest_VfaPet',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -70,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'VFA_Pet.context_processor.total_carrito',
             ],
         },
     },
@@ -77,6 +79,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'VFA_PetShop.wsgi.application'
 
+REST_FRAMEWORK ={
+    'DEFAULT_AUTHENTICATION_CLASSES':[
+        'rest_framework.authentication.TokenAuthentication',
+    ],
+
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
