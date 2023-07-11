@@ -103,7 +103,7 @@ def ingresarProd(request):
     catProd = Categoria.objects.get(idCategoria = categoria)
     Producto.objects.create(codProducto = codprod , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
     messages.success(request, "Producto añadido con exito")
-    messages.error(request, "Error al añadir el producto")
+
     return redirect('Inventario')
 
 @permission_required('VFA_Pet.delete_producto')
