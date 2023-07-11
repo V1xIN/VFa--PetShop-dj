@@ -50,6 +50,7 @@ def MenuP(request):
     return render(request,'VFA_Pet/MenuP.html')
 
 def ModificarContra(request):
+
     return render(request,'VFA_Pet/ModificarContra.html')
 
 def Producto1(request,codigo):
@@ -102,6 +103,7 @@ def ingresarProd(request):
     catProd = Categoria.objects.get(idCategoria = categoria)
     Producto.objects.create(codProducto = codprod , nombreP = nombrep , stock = stock, descipcion = descripcion, foto = foto, precio = precio, categoria = catProd)
     messages.success(request, "Producto añadido con exito")
+    messages.error(request, "Error al añadir el producto")
     return redirect('Inventario')
 
 @permission_required('VFA_Pet.delete_producto')
@@ -154,8 +156,19 @@ def ingresarUser(request):
     messages.success(request, "Usuario Registrado con exito")
     return redirect('RegistroUsuario')
 
+def modificarUser(request):
+    correo = request.POST['Correo']
+    contranew = request.POST['new_clave']
 
+    usuario = Usuario.objects.get(correo = correo)
+    usuario.clave = contranew
+    usuario.save()
 
+    user = User.objects.get(username=correo)
+    user.set_password(contranew)
+    user.save()
+    messages.success(request, " Usuario Actualizado con exito")
+    return redirect('Comprar')
 
 
 def iniciar_sesion(request):

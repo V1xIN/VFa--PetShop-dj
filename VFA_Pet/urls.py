@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import iniciar_sesion,actualizarProducto,eliminarProd,ingresarUser,ingresarProd,anadirProd, Carrito, Comprar, HistorialCompras, Inventario, MenuP, ModificarContra, Producto1, Producto2, Producto3, Producto4, RecuperarContra, RegistroUsuario, Ventas, ModificarProd
+from .views import modificarUser,iniciar_sesion,actualizarProducto,eliminarProd,ingresarUser,ingresarProd,anadirProd, Carrito, Comprar, HistorialCompras, Inventario, MenuP, ModificarContra, Producto1, Producto2, Producto3, Producto4, RecuperarContra, RegistroUsuario, Ventas, ModificarProd
 
 urlpatterns = [
     path('MenuP',MenuP,name="MenuP"),
@@ -20,5 +20,6 @@ urlpatterns = [
     path('eliminarProd/<int:codProd>',eliminarProd,name="eliminarProd"),
     path('ModificarProd/<int:codProd>',ModificarProd,name="ModificarProd"),
     path('actualizarProducto',actualizarProducto,name="actualizarProducto"),
+    path('modificarUser',modificarUser,name="modificarUser"),
     
 ]

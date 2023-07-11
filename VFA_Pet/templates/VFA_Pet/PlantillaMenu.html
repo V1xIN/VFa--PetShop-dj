@@ -17,15 +17,23 @@
         <li class="nav-item">
             <a href="{% url 'Comprar' %}"><img class="tam_logo_micro" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="sin imagen"></a>
         </li>
+        {% if user.is_authenticated %}
         <li class="nav-item">
-            <a class="nav-link  letra_menu" href="{% url 'ModificarContra'   %}">ModificarContra Contraseña</a>
+            <a class="nav-link  letra_menu" href="{% url 'ModificarContra'   %}">Modificar Usuario</a>
+        </li>
+        <li class="nav-item">
+        <li class="nav-item">
+            <a class="nav-link active letra_menu" href="{% url 'Carrito' %}">Carrito</a>
+        </li>   
+        {% else %}
+        <li class="nav-item">
+            <a class="nav-link  letra_menu" href="{% url 'RecuperarContra'   %}">Recuperar Contraseña</a>
         </li>
         <li class="nav-item">
             <a class="nav-link  letra_menu" href="{% url 'RegistroUsuario'   %}">Registro</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link active letra_menu" href="{% url 'Carrito' %}">Carrito</a>
-        </li>
+        {% endif %}
+        
         {% if perms.VFA_Pet.view_venta %}
         <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle letra_menu"  id="navbarDropdown" role="button"

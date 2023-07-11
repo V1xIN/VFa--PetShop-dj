@@ -7,7 +7,7 @@
         <div class="row" style="margin-top: 30px;">
             
             <div class="col-12  titulos">
-                <p>Modificar Contraseña</p>
+                <p>Modificar Usuario</p>
             </div>
         </div>
         <div class="row">
@@ -17,11 +17,16 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
         
-                        <form action="#"   method="POST" enctype="multipart/form-data" name="" id="formMod_Contra">
-        
+                        <form action="{% url 'modificarUser'%}"   method="POST" enctype="multipart/form-data" name="" id="formMod_Contra">
+                            {% csrf_token %}
+                            {% if user.is_authenticated %}
+                            <div class="form-group letra_form">
+                                <label class="form-label">Correo Electronico: </label>
+                                <input class="form-control" value="{{ user.username }}" type="text" name="Correo" id="Correo" required>
+                            </div>
                             <div class="form-group letra_form">
                                 <label class="form-label">Contraseña actual: </label>
-                                <input class="form-control" value="{{datos.clave}}" type="password" name="clave" id="clave" required>
+                                <input class="form-control" value="{{ user.password }}" type="password" name="clave" id="clave" required>
                             </div>
                             <div class="form-group letra_form">
                                 <label class="form-label">Contraseña nueva: </label>
@@ -33,15 +38,14 @@
                             </div>
                             
                             <div class="form-group letra_form">
-                                <input type="submit" value="Cambiar Contraseña" class="btn buttom">
-                                <input type="reset" value="Limpiar" class="btn buttom">
-                                
+                                <input type="submit" value="Cambiar Contraseña" class="btn buttom"> 
                             </div>
                             <div>
                                 <p class="warnings" id="warnings"></p>
                                 <img class="tam_logo_mini" src="{% static 'VFA_Pet/img/logofinal.png' %}" alt="Sin imagen">
                             </div>
-        
+
+                            {% endif %}
                         </form>
                     </div>
                     <div class="col-md-3">
