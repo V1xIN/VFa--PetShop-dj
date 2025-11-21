@@ -10,7 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
-from pathlib import Path, os
+from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -91,14 +92,14 @@ REST_FRAMEWORK ={
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'vfadb',
-        'PASSWORD': '12345678',
-        'TEST':{
-            'USER':'default_test',
-            'TBLSPACE':'default_test_tbls',
-            'TBLSPACE_TMP':'default_test_tbls_tmp',
+        'ENGINE': 'mssql',
+        'NAME': 'PetShopDB',        # asegúrate que esta BD existe
+        'USER': 'petshop',
+        'PASSWORD': '12345',
+        'HOST': 'localhost',        # porque tu instancia es MSSQLSERVER
+        'PORT': '1433',
+        'OPTIONS': {
+            'driver': 'ODBC Driver 17 for SQL Server',
         },
     }
 }
